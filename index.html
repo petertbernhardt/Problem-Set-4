@@ -9,21 +9,21 @@
 		<script>
 
 			var margin = {top: 80, right: 80, bottom: 80, left: 80},
-				width = 600 - margin.left - margin.right,
-				height = 400 - margin.top - margin.bottom;
+				width = 800 - margin.left - margin.right,
+				height = 600 - margin.top - margin.bottom;
 
 			var x = d3.scale.ordinal()
-				.rangeRoundBands([0, width], .1);
+				.rangeRoundBands([0, width], .01);
 
 			var y0 = d3.scale.linear().domain([300, 1100]).range([height, 0]),
-			y1 = d3.scale.linear().domain([20, 80]).range([height, 0]);
+			y1 = d3.scale.linear().domain([250000, 350000]).range([height, 0]);
 
 			var xAxis = d3.svg.axis()
 				.scale(x)
 				.orient("bottom");
 
 			// create left yAxis
-			var yAxisLeft = d3.svg.axis().scale(y0).ticks(4).orient("left");
+			var yAxisLeft = d3.svg.axis().scale(y0).ticks(5).orient("left");
 			// create right yAxis
 			var yAxisRight = d3.svg.axis().scale(y1).ticks(6).orient("right");
 

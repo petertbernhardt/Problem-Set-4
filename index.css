@@ -3,7 +3,7 @@ body {
 }
 
 .y.axisRight text {
-    fill: orange;
+    fill: green;
 }
 
 .y.axisLeft text {
@@ -22,7 +22,7 @@ body {
 }
 
 .bar2 {
-  fill: orange;
+  fill: limegreen;
 }
 
 .x.axis path {
