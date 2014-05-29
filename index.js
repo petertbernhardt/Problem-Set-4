@@ -4,7 +4,7 @@ window.onload = function() {
 	var countries = document.getElementById("countries");
 	countries.onchange = function changeData() {
 		var country = countries.options[countries.selectedIndex].text;
-		alert(country);
+		document.getElementById("header").innerHTML = country;
 		var margin = {top: 80, right: 80, bottom: 80, left: 80},
 			width = 800 - margin.left - margin.right,
 			height = 600 - margin.top - margin.bottom;
