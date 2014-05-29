@@ -3,8 +3,24 @@
 window.onload = function() {
 	var countries = document.getElementById("countries");
 	countries.onchange = function changeData() {
+		// delete the current graph
+		var elem = document.getElementsByTagName("svg")[0];
+		elem.parentNode.removeChild(elem);
+		// set variables
 		var country = countries.options[countries.selectedIndex].text;
 		document.getElementById("header").innerHTML = country;
+		var popMin;
+		var popMax;
+		if (country == "Iceland") {
+			popMin = 250000;
+			popMax = 350000;
+		} else if (country == "Japan") {
+			popMin = 124000000;
+			popMax = 128900000;
+		} else if (country == "Paraguay") {
+			popMin = 4600000;
+			popMax = 6700000;
+		}
 		var margin = {top: 80, right: 80, bottom: 80, left: 80},
 			width = 800 - margin.left - margin.right,
 			height = 600 - margin.top - margin.bottom;
@@ -13,7 +29,7 @@ window.onload = function() {
 			.rangeRoundBands([0, width], .01);
 
 		var y0 = d3.scale.linear().domain([300, 1100]).range([height, 0]),
-		y1 = d3.scale.linear().domain([250000, 350000]).range([height, 0]);
+		y1 = d3.scale.linear().domain([popMin, popMax]).range([height, 0]);
 
 		var xAxis = d3.svg.axis()
 			.scale(x)
@@ -30,7 +46,7 @@ window.onload = function() {
 		  .append("g")
 			.attr("class", "graph")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+		
 		var file;
 		if (country == "Iceland") {
 			file = "data.tsv";
@@ -39,7 +55,7 @@ window.onload = function() {
 		} else if (country == "Paraguay") {
 			file = "paraguay.tsv";
 		}
-			
+		
 		d3.tsv(file, type, function(error, data) {
 		  x.domain(data.map(function(d) { return d.year; }));
 		  y0.domain([0, d3.max(data, function(d) { return d.gni; })]);
