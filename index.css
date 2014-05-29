@@ -1,41 +1,30 @@
-svg {
+body {
   font: 10px sans-serif;
 }
 
-.y.axis path {
-  display: none;
+.y.axisRight text {
+    fill: orange;
 }
 
-.y.axis line {
-  stroke: #fff;
-  stroke-opacity: .2;
+.y.axisLeft text {
+    fill: steelblue;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
   shape-rendering: crispEdges;
 }
 
-.y.axis .zero line {
-  stroke: #000;
-  stroke-opacity: 1;
+.bar1 {
+  fill: steelblue;
 }
 
-.title {
-  font: 300 78px Helvetica Neue;
-  fill: #666;
+.bar2 {
+  fill: orange;
 }
 
-.birthyear,
-.age {
-  text-anchor: middle;
-}
-
-.birthyear {
-  fill: #fff;
-}
-
-rect {
-  fill-opacity: .6;
-  fill: #e377c2;
-}
-
-rect:first-child {
-  fill: #1f77b4;
+.x.axis path {
+  display: none;
 }
